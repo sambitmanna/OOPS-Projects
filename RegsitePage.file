@@ -1,0 +1,24 @@
+package user;
+import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import javafx.event.EventHandler;
+
+
+public class  RegistePage 
+{
+   public void handle(ActionEvent args0){    Scanner sc=new Scanner(System.in);
+       System.out.println("Enter new name:");
+                    String name = sc.nextLine();
+                    System.out.println("Enter new password:");
+                    String pass = sc.nextLine();
+                    System.out.println("Enter new Crop:");
+                    String crop=sc.nextLine();
+                    
+                    admin.IDandpasswords ob1=new admin.IDandpasswords(name,pass,crop);
+                     LoginPage1 loginPage1 = new LoginPage1();
+                    
+                    System.out.println("User registered successfully.");
+                    WelcomePage o=new WelcomePage(name);
+
+}
+}
