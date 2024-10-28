@@ -1,0 +1,64 @@
+package user;
+import java.util.*;
+import javafx.application.*;
+public class Main2  {
+    public static void main(String[] args)throws UsernameException,PasswordException {
+        Scanner sc = new Scanner(System.in);
+        admin.IDandpasswords idAndPasswords = new admin.IDandpasswords("john", "John123","wheat");
+
+        while (true) {
+            System.out.println("-----------Welcome-------");
+            System.out.println(" 1.Login  2.Register  3.Exit");
+            int choice = sc.nextInt();
+            sc.nextLine();  
+            String name, pass,crop;
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter name:");
+                    name = sc.nextLine();
+                    System.out.println("Enter password:");
+                    pass = sc.nextLine();
+                    System.out.println("Enter crop type");
+                    crop=sc.nextLine();
+                    try{
+
+                       admin.IDandpasswords idAndPasswords1=new admin.IDandpasswords(name,pass,crop);
+                    
+                    //LoginPage<String,String> ob=new LoginPage<String,String>(name,pass);
+                    LoginPage1 loginPage = new LoginPage1();
+                    //launch(args);
+                    //UserLogin<String,String> o2=new UserLogin<String,String>(name,pass);
+                    //ob.welcomePage(name);
+                                    }
+                    catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Enter new name:");
+                    name = sc.nextLine();
+                    System.out.println("Enter new password:");
+                    pass = sc.nextLine();
+                    System.out.println("Enter new crop");
+                    crop=sc.nextLine();
+                    admin.IDandpasswords ob1=new admin.IDandpasswords(name,pass,crop);
+                     LoginPage1 loginPage1 = new LoginPage1();
+                    
+                    System.out.println("User registered successfully.");
+                    WelcomePage o=new WelcomePage(name);
+                    break;
+
+                case 3:
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
+        }
+    }
+}
