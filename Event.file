@@ -1,0 +1,40 @@
+package user;
+
+import javafx.application.*;
+import javafx.scene.*;
+import javafx.stage.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.event.*;
+
+public class Event extends Application
+{
+    // instance variables - replace the example below with your own
+    Label response;
+
+    /**
+     * Constructor for objects of class Event
+     */
+    
+
+    public void start(Stage myStage)
+    {   FlowPane root=new FlowPane(10,10);
+        Scene myScene=new Scene(root,300,100);
+        myStage.setScene(myScene);
+      response=new Label("Push a button");
+        Button weather=new Button("weather");
+    Button live=new Button("Live");
+    Button help=new Button("Get Help");
+    weather.setOnAction(e -> System.out.println("Button Clicked!"));
+    live.setOnAction(e -> System.out.println("Livestock"));
+    help.setOnAction(e -> System.out.println("Get Help!"));
+        // Create a layout and add the button
+        StackPane layout = new StackPane();
+        root.getChildren().addAll(weather,live,help,response);
+        myStage.show();
+    }
+    public static void main(String[] args)
+    {
+        launch(args);
+    }
+}
