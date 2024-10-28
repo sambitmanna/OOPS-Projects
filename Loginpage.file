@@ -1,0 +1,81 @@
+package user;
+
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import java.util.*;
+public class LoginApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Creating the username and password labels and fields
+        Label usernameLabel = new Label("Username:");
+        TextField usernameField = new TextField();
+        Scanner sc=new Scanner(System.in);
+        Label passwordLabel = new Label("Password:");
+        PasswordField passwordField = new PasswordField();
+        
+        // Creating a button for login
+        Button loginButton = new Button("Login");
+        Button regButton=new Button("Register");
+        // Add action event to the login button
+        loginButton.setOnAction(e -> {
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+            
+            // Simple validation or action (replace with actual authentication logic)
+            if (username.equals("user") && password.equals("pass")) {
+                showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome " + username + "!");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
+            }
+        });
+        regButton.setOnAction(e -> {
+                
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+            String user=sc.next();
+            String pass=sc.next();
+            // Simple validation or action (replace with actual authentication logic)
+            if (username.equals(user) && password.equals(pass)) {
+                showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome " + username + "!");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
+            }
+        });
+        
+        // Arranging nodes in a GridPane
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        
+        gridPane.add(usernameLabel, 0, 0);
+        gridPane.add(usernameField, 1, 0);
+        gridPane.add(passwordLabel, 0, 1);
+        gridPane.add(passwordField, 1, 1);
+        gridPane.add(loginButton, 1, 2);
+        gridPane.add(regButton , 1, 3);
+        
+        // Creating a scene and setting it on the stage
+        Scene scene = new Scene(gridPane, 300, 200);
+        primaryStage.setTitle("Login Form");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    // Helper method to show alert dialogs
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
